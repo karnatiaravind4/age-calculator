@@ -1,0 +1,103 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Age Calculator</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg,#6a11cb,#2575fc);
+    height: 100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.container{
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    text-align:center;
+    width:300px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+h1{
+    margin-bottom:20px;
+}
+
+input{
+    padding:10px;
+    width:90%;
+    margin:10px 0;
+}
+
+button{
+    padding:10px 20px;
+    background:#2575fc;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1b5edc;
+}
+
+#result{
+    margin-top:20px;
+    font-size:20px;
+    font-weight:bold;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Age Calculator</h1>
+
+<label>Enter Your Date of Birth</label><br>
+
+<input type="date" id="dob"><br>
+
+<button onclick="calculateAge()">Calculate Age</button>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+
+function calculateAge(){
+
+let dob = document.getElementById("dob").value;
+
+if(dob == ""){
+document.getElementById("result").innerHTML="Please select your date of birth";
+return;
+}
+
+let dobDate = new Date(dob);
+let today = new Date();
+
+let age = today.getFullYear() - dobDate.getFullYear();
+
+let month = today.getMonth() - dobDate.getMonth();
+
+if(month < 0 || (month === 0 && today.getDate() < dobDate.getDate())){
+age--;
+}
+
+document.getElementById("result").innerHTML = "Your Age is " + age + " years";
+
+}
+
+</script>
+
+</body>
+</html>
+
